@@ -1,0 +1,106 @@
+
+---
+title: Disaster Affected Statistics report.|
+
+
+output: 
+ html_document:
+   theme: flatly # default, cerulean, journal, flatly, darkly, readable, spacelab, united, cosmo, lumen, paper, sandstone, simplex, and yeti
+   highlight: tango # default, tango, pygments, kate, monochrome, espresso, zenburn, haddock, breezedark, and textmate
+   smart: true
+   toc: true
+   toc_depth: 2
+   toc_float:
+     collapsed: false
+     smooth_scroll: false
+   numbers_sections: true
+   fig_width: 7
+   fig_height: 6
+   fig_caption: true
+   df_print: paged
+
+runtime: shiny   
+params:
+
+  m: NA
+  n: NA
+  s: NA
+  o: NA 
+  z: NA
+  minimum: 
+    label: "Minimum:"
+    value: 100
+    input: slider
+    min: 0
+    max: 1000
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+set.seed(1234)
+library(knitr)
+library(mapview)
+library(kableExtra)
+library(ggplot2)
+library(dplyr)
+library(purrr)
+
+```
+# Introduction
+
+In this section, users will be able to view the statistics table that shows the total extent and impact of natural hazards on the population, land cover, points of interest, and infrastructure data layers. Additionally, users can also access the statistical table
+
+## Disaster impact on assets map
+
+The below map shows the impact of hazard on the land cover, point of interest, population, and Infrastructure areas map.
+
+```{r echo=FALSE, message=TRUE, paged.print=FALSE,warning=FALSE}
+
+params$m
+
+```
+*Figure 1: Shows the impact of disaster on assets map.* 
+
+## Disaster Interest on Population map
+
+The below map shows the impact of natural hazard on the population data sets users can see in each pixel how many numbers of people.
+
+```{r echo=FALSE, message=TRUE, paged.print=FALSE,warning=FALSE}
+
+mapview(params$o, col.regions = params$z)
+
+
+```
+*Figure 2: Shows the impact of hazard on Population map.* 
+
+
+## Disaster Statistic Table:
+
+The table below shows disaster-related statistical information that provides data on the impact of natural hazards on population, land cover, points of interest, and infrastructure information. 
+
+```{r echo=FALSE, message=TRUE, paged.print=FALSE}
+
+datatable(data.frame(params$n),options = list(
+  dom = 't',
+  scrollX = TRUE,
+  scrollCollapse = TRUE
+))
+
+```
+
+
+### Meta data
+Below, we can find the metadata information, which provides detailed insights and descriptions about the data set you are referring to.
+```{r echo=FALSE, message=TRUE, paged.print=FALSE}
+
+datatable(data.frame(params$s),options = list(
+  dom = 't',
+  scrollX = TRUE,
+  scrollCollapse = TRUE
+))
+
+
+```
+
+

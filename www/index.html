@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>Disaster related statistics Accounting-Tool </title>
+
+  <style media="screen">
+    .video-background {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      z-index: -1;
+
+    }
+
+    @media (max-aspect-ratio: 16/9) {
+      .video-background {
+        width: auto;
+        height: 100%;
+      }
+    }
+
+    .btn {
+      color: #fff;
+      padding: 7px 22px;
+      text-decoration: none;
+      border-radius: 25px;
+    }
+
+    .btn-Download {
+      color: white;
+      border: 2px solid coral;
+    }
+
+    .btn-Download:hover {
+      background-color: coral;
+    }
+
+    .btn-subscri {
+      background-color: coral;
+    }
+
+    .welcome-msg {
+      position: relative;
+      text-align: center;
+      font-family: monospace;
+      color: #fff;
+      top: 150px;
+    }
+
+    .container {
+      display: inline-block;
+    }
+
+    .play-button {
+      margin-left: 49%;
+      margin-top: 2%;
+      background-color: coral;
+      border: none;
+      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s ease-in-out;
+      box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    .play-button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    }
+
+    .play-button:focus {
+      outline: none;
+    }
+
+    .play-button i {
+      color: white;
+      font-size: 1.2rem;
+    }
+
+    .button-text {
+      margin: 8px 0 0;
+      font-size: 0.8rem;
+      font-weight: bold;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    section::before {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.4);
+      z-index: -1;
+    }
+
+    .welcome-msg h1 {
+      color: #fff;
+      text-align: center;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 80px;
+      font-weight: 100;
+      letter-spacing: 5px;
+      margin-bottom: 30px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .video-popup {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      z-index: 9999;
+    }
+
+    .video-popup iframe {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80%;
+      height: 60%;
+    }
+
+    .video-popup .close-button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: transparent;
+      color: #fff;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+    }
+   .body{
+   overflow: hidden;
+   }
+
+   .alert-popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  z-index: 9999; /* Ensure the alert popup appears on top */
+}
+
+.popup-class {
+    opacity: 0.7; /* Adjust the value as needed (0 being transparent and 1 being opaque) */
+}
+.close-alert {
+  background-color: coral;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  margin-top: 10px;
+  cursor: pointer;
+  display: block;
+  margin: 0 auto; /* Center the close button horizontally */
+}
+  </style>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+  <div class="alert-popup">
+    <p>Click on the instructional video to know how to use the tool!</p>
+    <button class="close-alert">Close</button>
+  </div>
+<video autoplay muted loop class="video-background">
+  <source src="Flood - 26080.mp4" type="video/mp4">
+</video>
+
+<section>
+  <div class="welcome-msg">
+    <h1 class="Title">Disaster related statistics and <br>Accounting-Tool</h1>
+    <div>
+      <a class="btn btn-subscri" onclick="$('li:eq(1) a').tab('show');" role="button">Get Started Now &raquo;</a>
+
+      <a class="btn btn-Download" role="button" href="Sample Data.zip">Sample Data <i class="fa fa-download"></i></a>
+      <button class="play-button"><i class="fa fa-play"></i></button>
+      <p class="button-text">Instructional Video</p>
+    </div>
+  </div>
+
+
+  <div class="video-popup">
+    <iframe src="https://www.youtube.com/embed/" frameborder="0" allowfullscreen></iframe>
+    <button class="close-button">Close</button>
+  </div>
+</section>
+
+
+<script>
+  const playButton = document.querySelector('.play-button');
+  const videoPopup = document.querySelector('.video-popup');
+  const closeBtn = document.querySelector('.close-button');
+
+  playButton.addEventListener('click', function() {
+    videoPopup.style.display = 'block';
+  });
+
+  closeBtn.addEventListener('click', function() {
+    videoPopup.style.display = 'none';
+  });
+
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const alertPopup = document.querySelector('.alert-popup');
+    
+    // Hide the alert popup initially
+    alertPopup.style.display = 'none';
+
+    // Show the alert popup after 1 second
+    setTimeout(function() {
+        alertPopup.style.display = 'block';
+        
+        // Close the alert popup after 5 seconds
+        setTimeout(function() {
+            alertPopup.style.display = 'none';
+        }, 8000); // 4000 milliseconds = 4 seconds (after initial 1 second)
+    }, 1000); // 1000 milliseconds = 1 second
+});
+</script>
+
+
+
+</body>
+</html>

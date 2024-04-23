@@ -1,0 +1,137 @@
+
+---
+title: Land Cover Extent affected statistics report|
+
+output: 
+ html_document:
+   theme: flatly # default, cerulean, journal, flatly, darkly, readable, spacelab, united, cosmo, lumen, paper, sandstone, simplex, and yeti
+   highlight: tango # default, tango, pygments, kate, monochrome, espresso, zenburn, haddock, breezedark, and textmate
+   smart: true
+   toc: true
+   toc_depth: 2
+   toc_float:
+     collapsed: false
+     smooth_scroll: false
+   numbers_sections: true
+   fig_width: 7
+   fig_height: 6
+   fig_caption: true
+   df_print: paged
+
+runtime: shiny   
+params:
+
+  n: NA
+  m: NA
+  o: NA
+  p: NA
+  q: NA
+  s: NA
+  
+  minimum: 
+    label: "Minimum:"
+    value: 100
+    input: slider
+    min: 0
+    max: 1000
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+set.seed(1234)
+library(knitr)
+library(kableExtra)
+library(ggplot2)
+library(dplyr)
+library(purrr)
+
+```
+# Introduction 
+
+This comprehensive report contains a visual map showcasing the impact of natural hazards on the land. It also includes a detailed statistical table quantifying the extent of the affected land cover areas. Additionally, informative bar graphs visually represent the affected land cover areas in both quantitative and percentage terms. Furthermore, detailed metadata information is furnished for a more thorough understanding of the data presented.
+
+
+## Impact of Hazard on Land cover Map
+
+The map below clearly depicts the impact of hazards on different land cover areas. It illustrates which land cover types are more significantly affected and which ones are less affected. All this information is readily visible on the map provided. 
+
+```{r echo=FALSE, message=TRUE, paged.print=FALSE}
+
+# All defaults
+
+
+                params$m
+
+
+
+ 
+```
+
+*Figure 1: Impact of hazard extent one land cover area map.* 
+
+## Imact of Hazard on land cover:
+
+The table showcases the impact of hazards on land cover. Users can observe the approximate quantity of affected land areas and the corresponding percentage of land cover influenced by these hazards.
+
+```{r echo=FALSE, message=TRUE, paged.print=FALSE}
+
+# All defaults
+
+datatable(data.frame(params$o),options = list(
+  dom = 't',
+  scrollX = TRUE,
+  scrollCollapse = TRUE
+))
+
+    
+
+```
+
+*Table 1: Hazard area on land cover and percentage table.*
+
+
+The bar graph below illustrates the proportions of different land cover types affected within a specific region. This visual representation provides a comparative display of the areas various land cover types exposed to hazard.
+
+```{r echo=FALSE, message=TRUE, paged.print=FALSE}
+
+# All defaults
+
+params$q
+
+
+```
+*Figure 2:  land cover area affected.* 
+
+The bar graph below illustrates the proportions of different land cover types affected within a specific region. This visual representation provides a comparative display the percentage of various land  types are exposed to hazard. 
+
+
+```{r echo=FALSE, message=TRUE, paged.print=FALSE}
+
+# All defaults
+
+params$p
+
+
+```
+*Figure 3: Percentage of land cover affected.* 
+
+
+
+
+
+### Meta data  
+
+Below, we can find the metadata information, which provides detailed insights and descriptions about the data set you are referring to.
+
+```{r echo=FALSE, message=TRUE, paged.print=FALSE}
+
+datatable(data.frame(params$s),options = list(
+  dom = 't',
+  scrollX = TRUE,
+  scrollCollapse = TRUE
+))
+
+
+```
+

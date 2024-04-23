@@ -1,0 +1,92 @@
+
+---
+  title: Total Infrastructure Data Extent Statistic report.|
+  
+  output: 
+  html_document:
+  theme: flatly # default, cerulean, journal, flatly, darkly, readable, spacelab, united, cosmo, lumen, paper, sandstone, simplex, and yeti
+highlight: tango # default, tango, pygments, kate, monochrome, espresso, zenburn, haddock, breezedark, and textmate
+smart: true
+toc: true
+toc_depth: 2
+toc_float:
+  collapsed: false
+smooth_scroll: false
+numbers_sections: true
+fig_width: 7
+fig_height: 6
+fig_caption: true
+df_print: paged
+
+runtime: shiny   
+params:
+  
+  m: NA
+n: NA
+s: NA
+minimum: 
+  label: "Minimum:"
+value: 100
+input: slider
+min: 0
+max: 1000
+---
+  
+  
+  ```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+set.seed(1234)
+library(knitr)
+library(mapview)
+library(kableExtra)
+library(ggplot2)
+library(dplyr)
+library(purrr)
+
+```
+
+
+
+# Introduction
+In this report the users will be able to see the different socio-economic indicator layers the map below displays the different indicators. The table shows the different Statistics information.
+
+##  Socio-Economic Indicators-map
+
+The map below displays information on various Socioeconomic Indicators for each pixel. Users can view different statistical information on the map they can change the indicators by clicking on the layers button towards left
+
+```{r echo=FALSE, message=TRUE, paged.print=FALSE,warning=FALSE}
+
+params$m
+
+```
+*Figure 1: Shows the Socio-Economic Indicators map.* 
+  
+  ## Socio-Economic Statistic Information Table:
+  
+  The table below shows different Statistic information ware the users can see the total Socio-Economic Statistic accounts below. 
+
+```{r echo=FALSE, message=TRUE, paged.print=FALSE}
+
+datatable(data.frame(params$n),options = list(
+  dom = 't',
+  scrollX = TRUE,
+  scrollCollapse = TRUE
+))
+
+```
+
+
+### Meta data
+Below, we can find the metadata information, which provides detailed insights and descriptions about the data set you are referring to.
+```{r echo=FALSE, message=TRUE, paged.print=FALSE}
+
+datatable(data.frame(params$s),options = list(
+  dom = 't',
+  scrollX = TRUE,
+  scrollCollapse = TRUE
+))
+
+
+```
+
+
